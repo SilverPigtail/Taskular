@@ -1,0 +1,51 @@
+<div class="todo-container">
+  <h2>Taskular - My To-Do Board</h2>
+
+  <div class="input-group">
+    <input type="text" placeholder="Add a new task..." [(ngModel)]="newTask" />
+    <button (click)="addTask()">Add</button>
+  </div>
+
+  <div class="columns">
+    <!-- Pending Tasks -->
+    <div class="column">
+      <h3>Pending</h3>
+      <ul>
+        <li *ngFor="let task of tasksPending; let i = index">
+          {{ task }}
+          <div class="buttons">
+            <button (click)="moveToInProgress(i)">Start</button>
+            <button (click)="removeTask(tasksPending, i)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- In Progress Tasks -->
+    <div class="column">
+      <h3>In Progress</h3>
+      <ul>
+        <li *ngFor="let task of tasksInProgress; let i = index">
+          {{ task }}
+          <div class="buttons">
+            <button (click)="moveToCompleted(i)">Complete</button>
+            <button (click)="removeTask(tasksInProgress, i)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Completed Tasks -->
+    <div class="column">
+      <h3>Completed</h3>
+      <ul>
+        <li *ngFor="let task of tasksCompleted; let i = index">
+          {{ task }}
+          <div class="buttons">
+            <button (click)="removeTask(tasksCompleted, i)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
